@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fábrica de Milanesas Bragado | Calidad y Sabor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff1e27;
+            --primary-dark: #cc0008;
+            --dark: #0f0f0f;
+            --darker: #050505;
+            --card-bg: #181818;
+            --light: #ffffff;
+            --gold: #ffc107;
+            --whatsapp: #25d366;
+            --whatsapp-dark: #1ebe5d;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; }
+        
+        body { 
+            background-color: var(--darker); 
+            color: var(--light); 
+            line-height: 1.6; 
+        }
+
+        /* Header Destacado */
+        header { 
+            background: linear-gradient(180deg, var(--dark) 0%, var(--darker) 100%); 
+            border-bottom: 4px solid var(--primary); 
+            padding: 1.5rem 1rem; 
+            text-align: center; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+        }
+
+        .brand-title { 
+            font-size: 1.8rem; 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px; 
+            color: #fff;
+        }
+
+        .brand-title span { 
+            color: var(--primary); 
+            text-shadow: 0 0 10px rgba(255, 30, 39, 0.4);
+        }
+
+        .brand-subtitle {
+            font-size: 0.85rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        /* Banner de Envíos */
+        .banner-envios { 
+            background: linear-gradient(90deg, #d40008, var(--primary), #d40008); 
+            color: white; 
+            text-align: center; 
+            padding: 12px; 
+            font-weight: 800; 
+            font-size: 1.05rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px;
+            box-shadow: 0 2px 10px rgba(255,30,39,0.3);
+        }
+
+        .container { 
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 25px 15px; 
+        }
+
+        /* Sección Hero / Presentación */
+        .hero { 
+            text-align: center; 
+            padding: 25px 10px 10px 10px; 
+        }
+
+        .hero h2 { 
+            font-size: 2.2rem; 
+            margin-bottom: 8px; 
+            color: var(--light); 
+            font-weight: 900;
+        }
+
+        .hero h2 span { color: var(--gold); }
+
+        .hero p { 
+            color: #bbb; 
+            font-size: 1.1rem; 
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Grilla de Productos */
+        .menu-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 25px; 
+            margin-top: 35px; 
+        }
+
+        .card { 
+            background: var(--card-bg); 
+            border: 1px solid #333; 
+            border-radius: 16px; 
+            overflow: hidden; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.6); 
+            display: flex; 
+            flex-direction: column; 
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #555;
+        }
+
+        .card.destacada { 
+            border: 2px solid var(--gold); 
+            background: linear-gradient(145deg, #181818, #221d0a);
+        }
+
+        .card-header-badge {
+            background: var(--gold);
+            color: #000;
+            font-weight: 800;
+            text-align: center;
+            padding: 6px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-body { 
+            padding: 25px; 
+            display: flex; 
+            flex-direction: column; 
+            flex-grow: 1; 
+        }
+
+        .card-title { 
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            margin-bottom: 10px; 
+            color: #fff; 
+        }
+
+        .card-desc { 
+            color: #aaa; 
+            font-size: 0.95rem; 
+            margin-bottom: 20px; 
+            flex-grow: 1; 
+        }
+
+        .price-box {
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary);
+            padding-left: 12px;
+        }
+
+        .card.destacada .price-box {
+            border-left-color: var(--gold);
+        }
+
+        .price-label {
+            font-size: 0.8rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .price-tag { 
+            font-size: 2rem; 
+            font-weight: 900; 
+            color: var(--gold); 
+        }
+
+        .card:not(.destacada) .price-tag {
+            color: #fff;
+        }
+
+        /* Botones */
+        .btn { 
+            background: var(--whatsapp); 
+            color: white; 
+            border: none; 
+            padding: 15px; 
+            border-radius: 12px; 
+            font-size: 1.05rem; 
+            font-weight: 800; 
+            cursor: pointer; 
+            text-align: center; 
+            transition: background 0.2s, transform 0.1s; 
+            text-decoration: none; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%; 
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn:hover { 
+            background: var(--whatsapp-dark); 
+            transform: scale(1.02);
+        }
+
+        /* Sección de Pago */
+        .section-box { 
+            background: var(--card-bg); 
+            border: 1px solid #333; 
+            border-radius: 16px; 
+            padding: 30px; 
+            margin-top: 40px; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+        }
+
+        .section-box h3 { 
+            color: var(--gold); 
+            margin-bottom: 10px; 
+            font-size: 1.5rem; 
+            font-weight: 800;
+        }
+
+        .section-box p {
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+        
+        .alias-box { 
+            background: #111; 
+            padding: 20px; 
+            border-radius: 12px; 
+            border: 2px dashed var(--primary); 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .alias-info span {
+            display: block;
+        }
+
+        .alias-label {
+            font-size: 0.8rem; 
+            color: #888; 
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .alias-text { 
+            font-family: monospace; 
+            font-size: 1.6rem; 
+            color: var(--gold); 
+            font-weight: bold; 
+            letter-spacing: 1px;
+        }
+
+        .btn-copiar { 
+            background: var(--primary); 
+            color: white; 
+            border: none; 
+            padding: 12px 25px; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-weight: 800;
+            font-size: 0.95rem;
+            transition: background 0.2s;
+        }
+
+        .btn-copiar:hover { 
+            background: var(--primary-dark); 
+        }
+
+        /* Banner Mayorista */
+        .mayorista-banner { 
+            background: linear-gradient(145deg, #1a1a1a, #0a0a0a); 
+            border: 2px solid var(--gold); 
+            border-radius: 16px; 
+            padding: 35px 20px; 
+            text-align: center; 
+            margin-top: 40px; 
+            box-shadow: 0 8px 30px rgba(255, 193, 7, 0.15);
+        }
+
+        .mayorista-banner h3 { 
+            color: var(--gold); 
+            margin-bottom: 12px; 
+            font-size: 1.8rem; 
+            font-weight: 900;
+        }
+
+        .mayorista-banner p { 
+            margin-bottom: 25px; 
+            color: #ddd; 
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-mayorista {
+            background: var(--primary);
+            max-width: 320px;
+            margin: 0 auto;
+            box-shadow: 0 4px 15px rgba(255,30,39,0.4);
+        }
+
+        .btn-mayorista:hover {
+            background: var(--primary-dark);
+        }
+
+        footer { 
+            text-align: center; 
+            padding: 40px 20px; 
+            color: #666; 
+            font-size: 0.9rem; 
+            border-top: 1px solid #222; 
+            margin-top: 50px; 
+        }
+
+        /* Notificación Copiado */
+        #toast {
+            visibility: hidden;
+            background-color: #25d366;
+            color: white;
+            text-align: center;
+            border-radius: 8px;
+            padding: 14px;
+            position: fixed;
+            z-index: 2000;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        #toast.show {
+            visibility: visible;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+
+        @keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 class="brand-title">Fábrica de Milanesas <span>Bragado</span></h1>
+        <div class="brand-subtitle">Artesanales y de Calidad Superior</div>
+    </header>
+
+    <div class="banner-envios">
+        🚚 ¡Envíos gratis a domicilio en Bragado! 🚚
+    </div>
+
+    <div class="container">
+        
+        <div class="hero">
+            <h2>Elegí tus <span>Milanesas de Pollo</span></h2>
+            <p>100% tiernas, elaboradas con materia prima seleccionada. Listas para cocinar o freezer.</p>
+        </div>
+
+        <div class="menu-grid">
+            <!-- Producto 1: 1 Kilo -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title">1 Kilo</div>
+                    <div class="card-desc">Porción ideal para resolver tus almuerzos o cenas con la mejor calidad.</div>
+                    <div class="price-box">
+                        <div class="price-label">Precio Regular</div>
+                        <div class="price-tag">$9.000</div>
+                    </div>
+                    <a href="https://wa.me/5492342556877?text=Hola!%20Quiero%20pedir%201%20kg%20de%20milanesas%20de%20pollo%20($9.000)." class="btn" target="_blank">
+                        💬 Pedir 1 Kilo por WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- Producto 2: Promo 2 Kilos -->
+            <div class="card destacada">
+                <div class="card-header-badge">🔥 ¡La Más Vendida & Ahorro Total!</div>
+                <div class="card-body">
+                    <div class="card-title">Promo 2 Kilos</div>
+                    <div class="card-desc">Llevá 2 kilos y aprovechá el precio promocional exclusivo. ¡Conveniencia pura!</div>
+                    <div class="price-box">
+                        <div class="price-label">Precio Promo</div>
+                        <div class="price-tag">$17.000</div>
+                    </div>
+                    <a href="https://wa.me/5492342556877?text=Hola!%20Quiero%20aprovechar%20la%20promo%20de%202%20kg%20de%20milanesas%20de%20pollo%20($17.000)." class="btn" target="_blank">
+                        💬 Pedir Promo 2 Kg por WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de Pago -->
+        <div class="section-box">
+            <h3>💳 Medios de Pago</h3>
+            <p>Podés abonar en efectivo al recibir tu pedido en casa o mediante transferencia bancaria rápida:</p>
+            <div class="alias-box">
+                <div class="alias-info">
+                    <span class="alias-label">ALIAS DE TRANSFERENCIA:</span>
+                    <span class="alias-text">percu.pollo</span>
+                </div>
+                <button class="btn-copiar" onclick="copiarAlias()">📋 Copiar Alias</button>
+            </div>
+        </div>
+
+        <!-- Sección Mayoristas / Comercios -->
+        <div class="mayorista-banner">
+            <h3>🏪 ¿Tenés un negocio o comercio?</h3>
+            <p>Atención preferencial a almacenes, carnicerías y puntos de venta. Tocá el botón para coordinar compras por mayor directo con nosotros.</p>
+            <a href="https://wa.me/5492342556877?text=Hola!%20Tengo%20un%20comercio%20y%20quiero%20consultar%20por%20precios%20mayoristas%20de%20milanesas." class="btn btn-mayorista" target="_blank">
+                🏪 Consultar para Comercios
+            </a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Fábrica de Milanesas Bragado. Todos los derechos reservados.</p>
+    </footer>
+
+    <div id="toast">¡Alias copiado: percu.pollo!</div>
+
+    <script>
+        function copiarAlias() {
+            const alias = "percu.pollo";
+            navigator.clipboard.writeText(alias).then(() => {
+                const toast = document.getElementById("toast");
+                toast.className = "show";
+                setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
+            });
+        }
+    </script>
+</body>
+</html>
